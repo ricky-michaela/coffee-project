@@ -11,9 +11,9 @@ function renderCoffee(coffee) {
 
 function renderCoffees(coffees) {
     let html = '';
-    for(let i = 0; i < coffees.length; i++) {
+    for(let i = 0; i < coffees.length; i++)  {
         html += renderCoffee(coffees[i]);
-    }
+    } // Made to ascending ID order
     return html;
 }
 
@@ -57,3 +57,44 @@ tbody.innerHTML = renderCoffees(coffees);
 submitButton.addEventListener('click', updateCoffees);
 
 // Javascript we added
+// const userInput = document.getElementById("coffeeName").value.toLowerCase();
+// const selectOption = document.querySelector("#roast-selection");
+// selectOption.addEventListener("change", function(e) {
+//     e.preventDefault()
+//     let selectOptions = e.target.value
+//     if (selectOptions === "All") {
+//         return renderCoffee(coffees);
+//         // alert("All select works");
+//     } else if (selectOptions === "Light") {
+//         let lightCoffees = [];
+//
+//         for (let i =0; i < coffees.length; i++){
+//             if (coffees[i].roast === "Light") {
+//                 lightCoffees.push(coffees[i]);
+//             }
+//         }
+//         renderCoffee(lightCoffees);
+//     }
+// });
+let selectOption = document.getElementById('selectOption');
+if (selectOption) {
+    selectOption.addEventListener('change', function(e) {
+        e.preventDefault();
+        let selectedOption = e.target.value;
+        if (selectedOption === 'All') {
+            renderCoffee(coffees);
+        } else if (selectedOption === 'Light') {
+            let lightCoffees = [];
+            // iterate over the coffees array
+            for (let i=0; i < coffees.length; i++) {
+                // check if the roast of the coffee is light
+                if (coffees[i].roast === 'light') {
+                    // if roast is light, push it to the lightCoffees array
+                    lightCoffees.push(coffees[i]);
+                }
+            }
+            renderCoffee(lightCoffees);
+        }
+    });
+    selectOption.setAttribute('aria-label', 'Coffee Type Select'); // Descriptive label
+}
