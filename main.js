@@ -2,7 +2,6 @@
 
 function renderCoffee(coffee) {
     let html = '<tr class="coffee">';
-    html += `<td>${coffee.id}</td>`;
     html += `<td>${coffee.name}</td>`;
     html += `<td>${coffee.roast}</td>`;
     html += '</tr>';
@@ -12,7 +11,7 @@ function renderCoffee(coffee) {
 
 function renderCoffees(coffees) {
     let html = '';
-    for(let i = coffees.length - 1; i >= 0; i--) {
+    for(let i = 0; i < coffees.length; i++) {
         html += renderCoffee(coffees[i]);
     }
     return html;
@@ -47,7 +46,6 @@ const coffees = [
     {id: 13, name: 'Italian', roast: 'dark'},
     {id: 14, name: 'French', roast: 'dark'},
 ];
-
 
 
 const tbody = document.querySelector('#coffees');
