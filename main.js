@@ -48,6 +48,8 @@ const coffees = [
     {id: 14, name: 'French', roast: 'dark'},
 ];
 
+
+
 const tbody = document.querySelector('#coffees');
 const submitButton = document.querySelector('#submit');
 const roastSelection = document.querySelector('#roast-selection');
