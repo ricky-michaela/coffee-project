@@ -45,8 +45,28 @@ function searchCoffees(e) {
     tbody.innerHTML = inputResult;
 }
 
-function addCoffee(){
+//function below is for the add coffee form
+// function addCoffee(e) {
+//     e.preventDefault();
+//     const addUserInput = e.target.value.toLowerCase();
+//     const selectedRoast = roastSelection.value;
+//     let addCoffeeResult = '';
+//     coffees.forEach(coffee => {
+//         if (coffee.roast === selectedRoast && coffee.name === addUserInput) {
+//             addCoffeeResult += `${coffee.name} <br>`;
+//         }
+//     });
+//     tbody.innerHTML += addCoffeeResult;
+// }
 
+function createElement(e) {
+    e.preventDefault();
+    if (addCoffeeInput.value.trim() !== '') {
+        const createTr = document.createElement("tr");//dont forget to change when change the table
+        createTr.innerHTML = `<tr>${addCoffeeInput.value}</tr>`;
+        tbody.appendChild(createTr);
+    }
+    addCoffeeInput.value = '';
 }
 
 // from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
@@ -72,17 +92,32 @@ coffees.reverse();
 
 //variables for the search coffee form
 const tbody = document.querySelector('#coffees');
-const submitButton = document.querySelector('#submit');
+const submitButton = document.querySelector('#searchCoffeeBtn');
 const roastSelection = document.querySelector('#roast-selection');
 const searchCoffee = document.querySelector('#searchCoffeeName');
 
 //variables for the add coffee form
-const addCoffeeBtn =
+const addCoffeeBtn = document.querySelector("#addNewCoffee");
+const addCoffeeSelect = document.querySelector("#addRoast");
+const addCoffeeInput = document.querySelector("#addCoffee");
 
 tbody.innerHTML = renderCoffees(coffees);
 
+//event listeners for the search form
 submitButton.addEventListener('click', updateCoffees);
 
 roastSelection.addEventListener('change', updateCoffees);
 
 searchCoffee.addEventListener('input', searchCoffees);
+
+// event listeners for the add form
+// addCoffeeBtn.addEventListener('submit', createElement);
+// tbody.addEventListener('submit', createElement);
+
+// addCoffeeSelect.addEventListener('input', createElement);
+
+// addCoffeeInput.addEventListener('input', createElement);
+addCoffeeBtn.addEventListener('submit', function (e) {
+    e.preventDefault();
+    createElement();
+});
