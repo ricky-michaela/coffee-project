@@ -61,63 +61,65 @@ function searchCoffees(e) {
 
 function createElement(e) {
     e.preventDefault();
+
     if (addCoffeeInput.value.trim() !== '') {
-        const createTr = document.createElement("tr");//dont forget to change when change the table
-        createTr.innerHTML = `<tr>${addCoffeeInput.value}</tr>`;
+        const createTr = document.createElement("tr");//don't forget to change when change the table
+        createTr.innerHTML = `<td>${addCoffeeInput.value}</td>`;
         tbody.appendChild(createTr);
     }
-    addCoffeeInput.value = '';
-}
+    coffees.forEach(coffee => {
+            const selectedRoast = roastSelection.value;
+            if (coffee.roast === selectedRoast) {
+                const createRoastTd = document.createElement("tr");
+                createRoastTd.innerHTML = `<td>${selectedRoast}</td>`;
+                tbody.appendChild(createRoastTd);
+            }
+        });
+        addCoffeeInput.value = '';
+    }
 
 // from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
-const coffees = [
-    {id: 1, name: 'Light City', roast: 'light'},
-    {id: 2, name: 'Half City', roast: 'light'},
-    {id: 3, name: 'Cinnamon', roast: 'light'},
-    {id: 4, name: 'City', roast: 'medium'},
-    {id: 5, name: 'American', roast: 'medium'},
-    {id: 6, name: 'Breakfast', roast: 'medium'},
-    {id: 7, name: 'High', roast: 'dark'},
-    {id: 8, name: 'Continental', roast: 'dark'},
-    {id: 9, name: 'New Orleans', roast: 'dark'},
-    {id: 10, name: 'European', roast: 'dark'},
-    {id: 11, name: 'Espresso', roast: 'dark'},
-    {id: 12, name: 'Viennese', roast: 'dark'},
-    {id: 13, name: 'Italian', roast: 'dark'},
-    {id: 14, name: 'French', roast: 'dark'},
-];
+    const coffees = [
+        {id: 1, name: 'Light City', roast: 'light'},
+        {id: 2, name: 'Half City', roast: 'light'},
+        {id: 3, name: 'Cinnamon', roast: 'light'},
+        {id: 4, name: 'City', roast: 'medium'},
+        {id: 5, name: 'American', roast: 'medium'},
+        {id: 6, name: 'Breakfast', roast: 'medium'},
+        {id: 7, name: 'High', roast: 'dark'},
+        {id: 8, name: 'Continental', roast: 'dark'},
+        {id: 9, name: 'New Orleans', roast: 'dark'},
+        {id: 10, name: 'European', roast: 'dark'},
+        {id: 11, name: 'Espresso', roast: 'dark'},
+        {id: 12, name: 'Viennese', roast: 'dark'},
+        {id: 13, name: 'Italian', roast: 'dark'},
+        {id: 14, name: 'French', roast: 'dark'},
+    ];
 
 //shows coffees in correct order
-coffees.reverse();
+    coffees.reverse();
 
 //variables for the search coffee form
-const tbody = document.querySelector('#coffees');
-const submitButton = document.querySelector('#searchCoffeeBtn');
-const roastSelection = document.querySelector('#roast-selection');
-const searchCoffee = document.querySelector('#searchCoffeeName');
+    const tbody = document.querySelector('#coffees');
+    const submitButton = document.querySelector('#searchCoffeeBtn');
+    const roastSelection = document.querySelector('#roast-selection');
+    const searchCoffee = document.querySelector('#searchCoffeeName');
 
 //variables for the add coffee form
-const addCoffeeBtn = document.querySelector("#addNewCoffee");
-const addCoffeeSelect = document.querySelector("#addRoast");
-const addCoffeeInput = document.querySelector("#addCoffee");
+    const addCoffeeBtn = document.querySelector("#addNewCoffee");
+    const addCoffeeSelect = document.querySelector("#addRoast");
+    const addCoffeeInput = document.querySelector("#addCoffee");
 
-tbody.innerHTML = renderCoffees(coffees);
+    tbody.innerHTML = renderCoffees(coffees);
 
 //event listeners for the search form
-submitButton.addEventListener('click', updateCoffees);
+    submitButton.addEventListener('click', updateCoffees);
 
-roastSelection.addEventListener('change', updateCoffees);
+    roastSelection.addEventListener('change', updateCoffees);
 
-searchCoffee.addEventListener('input', searchCoffees);
+    searchCoffee.addEventListener('input', searchCoffees);
 
 // event listeners for the add form
-// addCoffeeBtn.addEventListener('submit', createElement);
-// tbody.addEventListener('submit', createElement);
+    addCoffeeBtn.addEventListener('click', createElement);
 
-// addCoffeeSelect.addEventListener('input', createElement);
 
-// addCoffeeInput.addEventListener('input', createElement);
-addCoffeeBtn.addEventListener('submit', function (e) {
-    e.preventDefault();
-    createElement();
-});
