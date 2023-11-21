@@ -1,10 +1,17 @@
 "use strict";
 
 function renderCoffee(coffee) {
-    let html = '<tr class="coffee">';
-    html += `<td>${coffee.name}</td>`;
-    html += `<td>${coffee.roast}</td>`;
-    html += '</tr>';
+    // let html = '<tr class="coffee">';
+    // html += `<td>${coffee.name}</td>`;
+    // html += `<td>${coffee.roast}</td>`;
+    // html += '</tr>';
+
+    let html = `<div class="card w-50 m-3 border-light d-flex flex-column flex-wrap">
+  <div class="card-body">
+    <h5 class="card-title">${coffee.name}</h5>
+    <p class="card-text">${coffee.roast}</p>
+  </div>
+</div>`
 
     return html;
 }
@@ -43,6 +50,7 @@ function searchCoffees(e) {
         }
     }
     tbody.innerHTML = inputResult;
+    userInput.value = '';
 }
 //Function below for add coffee form
 function createElement(e) {
