@@ -44,37 +44,16 @@ function searchCoffees(e) {
     }
     tbody.innerHTML = inputResult;
 }
-
-//function below is for the add coffee form
-// function addCoffee(e) {
-//     e.preventDefault();
-//     const addUserInput = e.target.value.toLowerCase();
-//     const selectedRoast = roastSelection.value;
-//     let addCoffeeResult = '';
-//     coffees.forEach(coffee => {
-//         if (coffee.roast === selectedRoast && coffee.name === addUserInput) {
-//             addCoffeeResult += `${coffee.name} <br>`;
-//         }
-//     });
-//     tbody.innerHTML += addCoffeeResult;
-// }
-
+//Function below for add coffee form
 function createElement(e) {
     e.preventDefault();
-
+    // const selectedRoast = roastSelection.value;
+    const addSelectRoast = addCoffeeSelect.value;
     if (addCoffeeInput.value.trim() !== '') {
         const createTr = document.createElement("tr");//don't forget to change when change the table
-        createTr.innerHTML = `<td>${addCoffeeInput.value}</td>`;
+        createTr.innerHTML = `<td>${addCoffeeInput.value}</td><td>${addSelectRoast}</td>`;
         tbody.appendChild(createTr);
     }
-    coffees.forEach(coffee => {
-            const selectedRoast = roastSelection.value;
-            if (coffee.roast === selectedRoast) {
-                const createRoastTd = document.createElement("tr");
-                createRoastTd.innerHTML = `<td>${selectedRoast}</td>`;
-                tbody.appendChild(createRoastTd);
-            }
-        });
         addCoffeeInput.value = '';
     }
 
