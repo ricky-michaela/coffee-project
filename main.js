@@ -28,32 +28,25 @@ function updateCoffees(e) {
     });
     tbody.innerHTML = renderCoffees(filteredCoffees);
 }
-// const filteredSearch = [];
-// function searchCoffees(e) {
-//     e.preventDefault();
-//     const userInput = e.target.toLowerCase();
-//     filteredSearch.forEach(filteredSearch => {
-//         const searchedCoffee = name.includes(userInput);
-//
-//     });
-// }
 
+// Function below is for the search of coffee names
 function searchCoffees(e) {
     e.preventDefault();
     const userInput = e.target.value.toLowerCase(); // get user input from the input field
-
     let searchedCoffees = coffees.filter(coffee => {
         return coffee.name.toLowerCase().includes(userInput);
     });
-
-    let htmlResult = ''; // Resets the search
-
+    let inputResult = ''; // Resets the search
     if (searchedCoffees.length > 0) {
         for (let i = 0; i < searchedCoffees.length; i++) {
-            htmlResult += `${searchedCoffees[i].name} <br>`;
+            inputResult += `${searchedCoffees[i].name} <br>`;
         }
     }
-    tbody.innerHTML = htmlResult;
+    tbody.innerHTML = inputResult;
+}
+
+function addCoffee(){
+
 }
 
 // from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
@@ -73,13 +66,18 @@ const coffees = [
     {id: 13, name: 'Italian', roast: 'dark'},
     {id: 14, name: 'French', roast: 'dark'},
 ];
+
+//shows coffees in correct order
 coffees.reverse();
 
-
+//variables for the search coffee form
 const tbody = document.querySelector('#coffees');
 const submitButton = document.querySelector('#submit');
 const roastSelection = document.querySelector('#roast-selection');
 const searchCoffee = document.querySelector('#searchCoffeeName');
+
+//variables for the add coffee form
+const addCoffeeBtn =
 
 tbody.innerHTML = renderCoffees(coffees);
 
