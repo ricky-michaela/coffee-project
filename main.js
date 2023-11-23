@@ -1,17 +1,10 @@
 "use strict";
 
 function renderCoffee(coffee) {
-    // let html = '<tr class="coffee">';
-    // html += `<td>${coffee.name}</td>`;
-    // html += `<td>${coffee.roast}</td>`;
-    // html += '</tr>';
-
-    let html = `<div class="card w-50 m-3 border-light d-flex flex-column flex-wrap">
-  <div class="card-body">
-    <h5 class="card-title">${coffee.name}</h5>
-    <p class="card-text">${coffee.roast}</p>
-  </div>
-</div>`
+    let html = `<div class="coffee">`;
+    html += `<h5>${coffee.name}</h5><i class="fa-solid fa-mug-hot fa-lg" style="color: #967259;"></i>`;
+    html += `<p>${coffee.roast}</p>`
+    html += `</div>`;
 
     return html;
 }
@@ -46,20 +39,20 @@ function searchCoffees(e) {
     let inputResult = ''; // Resets the search
     if (searchedCoffees.length > 0) {
         for (let i = 0; i < searchedCoffees.length; i++) {
-            inputResult += `${searchedCoffees[i].name} <br>`;
+            inputResult += `<div class="searchClass"><h5>${searchedCoffees[i].name}</h5><i class="fa-solid fa-mug-hot fa-lg" style="color: #967259;"></i><p>${searchedCoffees[i].roast}</p></div>`;
         }
     }
     tbody.innerHTML = inputResult;
-    userInput.value = '';
+
 }
 //Function below for add coffee form
 function createElement(e) {
     e.preventDefault();
     // const selectedRoast = roastSelection.value;
-    const addSelectRoast = addCoffeeSelect.value;
     if (addCoffeeInput.value.trim() !== '') {
-        const createTr = document.createElement("tr");//don't forget to change when change the table
-        createTr.innerHTML = `<td>${addCoffeeInput.value}</td><td>${addSelectRoast}</td>`;
+        const addSelectRoast = addCoffeeSelect.value;
+        const createTr = document.createElement("div");//don't forget to change when change the table
+        createTr.innerHTML = `<h5>${addCoffeeInput.value}</h5><i class="fa-solid fa-mug-hot fa-lg" style="color: #967259;"></i><p>${addSelectRoast}</p>`;
         tbody.appendChild(createTr);
     }
         addCoffeeInput.value = '';

@@ -1,12 +1,52 @@
-table {
-    border-collapse: collapse;
-    margin: 15px 0;
+body {
+    background-image: url("images/coffee.jpg");
+    background-size: cover;
+}
+h1, h2, h5 {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: bold;
 }
 
-td, th {
-    padding: 5px 10px;
-    border: none;
+h1 {
+    color: white;
+    margin-top: 1em;
 }
+
+label, p {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: lighter;
+}
+
+#coffees > div {
+    background: rgba(255, 255, 255, .7);
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid ;
+    margin-top: .5em;
+    margin-bottom: .5em;
+}
+
+.searchClass {
+    background: rgba(255, 255, 255, .7);
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid red;
+    margin-top: 1em;
+}
+
+form {
+    background: rgba(255, 255, 255, .7);
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: .5em;
+}
+
+i {
+    color: #967259;
+}
+
+
+
 
 
 
